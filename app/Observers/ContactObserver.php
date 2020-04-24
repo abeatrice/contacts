@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Contact;
+use App\Jobs\SyncRemoteContacts;
 
 class ContactObserver
 {
@@ -14,13 +15,7 @@ class ContactObserver
      */
     public function created(Contact $contact)
     {
-        $tracker = new \Klaviyo('Y6FkHL');
-        $tracker->identify([
-            '$id' => $contact->id,
-            '$email' => $contact->email,
-            '$first_name' => $contact->first_name,
-            '$phone_number' => $contact->phone,
-        ]);
+        SyncRemoteContacts::dispatch($contact);
     }
 
     /**
@@ -31,13 +26,7 @@ class ContactObserver
      */
     public function updated(Contact $contact)
     {
-        $tracker = new \Klaviyo('Y6FkHL');
-        $tracker->identify([
-            '$id' => $contact->id,
-            '$email' => $contact->email,
-            '$first_name' => $contact->first_name,
-            '$phone_number' => $contact->phone,
-        ]);
+        SyncRemoteContacts::dispatch($contact);
     }
 
     /**

@@ -76,5 +76,9 @@
             @yield('content')
         </main>
     </div>
+    <script
+        async type="text/javascript"
+        src="//static.klaviyo.com/onsite/js/klaviyo.js?company_id=Y6FkHL"
+    ></script>
 </body>
 </html>

@@ -23,7 +23,7 @@
                     </div>
                     <div class="form-group">
                         <label for="phone">Phone</label>
-                        <input type="text" class="form-control" id="phone" name="phone" value="{{ old('phone', $contact->phone) }}" required>
+                        <input type="tel" class="form-control" id="phone" name="phone" value="{{ old('phone', $contact->phone) }}" required>
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>

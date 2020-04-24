@@ -14,9 +14,9 @@ class ContactController extends Controller
      */
     public function index()
     {
-        return view('contact.index', [
-            'contacts' => Contact::paginate(15)
-        ]);
+        $contacts = auth()->user()->contacts()->paginate(15);
+
+        return view('contact.index', compact('contacts'));
     }
 
     /**
@@ -40,10 +40,12 @@ class ContactController extends Controller
         $attributes = $request->validate([
             'first_name' => 'required|alpha|min:2',
             'email' => 'required|email',
-            'phone' => 'required|alpha_dash',
+            'phone' => 'required|required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
         ]);
 
-        Contact::create($attributes);
+        auth()->user()->contacts()->save(
+            Contact::make($attributes)
+        );
 
         return redirect()->route('contacts.index')->withStatus('contact created.');
     }
@@ -82,7 +84,7 @@ class ContactController extends Controller
         $attributes = $request->validate([
             'first_name' => 'required|alpha|min:2',
             'email' => 'required|email',
-            'phone' => 'required|alpha_dash',
+            'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
         ]);
 
         $contact->update($attributes);

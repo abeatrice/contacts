@@ -5,6 +5,8 @@
     <div class="row justify-content-center">
         @include('alerts.errors')
         @include('alerts.success')
+    </div>
+    <div class="row justify-content-center">
         <div class="card">
             <div class="card-header">
                 Create Contact:
@@ -22,7 +24,7 @@
                     </div>
                     <div class="form-group">
                         <label for="phone">Phone</label>
-                        <input type="text" class="form-control" id="phone" name="phone" value="{{ old('phone') }}" required>
+                        <input type="tel" class="form-control" id="phone" name="phone" value="{{ old('phone') }}"  autocomplete="tel" required>
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>

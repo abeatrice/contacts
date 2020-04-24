@@ -30,4 +30,8 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'klaviyo' => [
+        'public' => env('KLAVIYO_PUBLIC_KEY'),
+        'private' => env('KLAVIYO_PRIVATE_KEY'),
+    ],
 ];

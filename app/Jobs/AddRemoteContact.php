@@ -3,13 +3,14 @@
 namespace App\Jobs;
 
 use App\Contact;
+use App\Contracts\RemoteContact;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 
-class SyncRemoteContacts implements ShouldQueue
+class AddRemoteContact implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -30,14 +31,8 @@ class SyncRemoteContacts implements ShouldQueue
      *
      * @return void
      */
-    public function handle()
+    public function handle(RemoteContact $remoteContact)
     {
-        $tracker = new \Klaviyo('Y6FkHL');
-        $tracker->identify([
-            '$id' => $this->contact->id,
-            '$email' => $this->contact->email,
-            '$first_name' => $this->contact->first_name,
-            '$phone_number' => $this->contact->phone,
-        ]);
+        $remoteContact->addContact($this->contact);
     }
 }

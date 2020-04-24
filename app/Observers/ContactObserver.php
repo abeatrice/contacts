@@ -3,7 +3,8 @@
 namespace App\Observers;
 
 use App\Contact;
-use App\Jobs\SyncRemoteContacts;
+use App\Jobs\AddRemoteContact;
+use App\Jobs\UpdateRemoteContact;
 
 class ContactObserver
 {
@@ -15,7 +16,7 @@ class ContactObserver
      */
     public function created(Contact $contact)
     {
-        SyncRemoteContacts::dispatch($contact);
+        AddRemoteContact::dispatch($contact);
     }
 
     /**
@@ -26,39 +27,6 @@ class ContactObserver
      */
     public function updated(Contact $contact)
     {
-        SyncRemoteContacts::dispatch($contact);
-    }
-
-    /**
-     * Handle the contact "deleted" event.
-     *
-     * @param  \App\Contact  $contact
-     * @return void
-     */
-    public function deleted(Contact $contact)
-    {
-        //
-    }
-
-    /**
-     * Handle the contact "restored" event.
-     *
-     * @param  \App\Contact  $contact
-     * @return void
-     */
-    public function restored(Contact $contact)
-    {
-        //
-    }
-
-    /**
-     * Handle the contact "force deleted" event.
-     *
-     * @param  \App\Contact  $contact
-     * @return void
-     */
-    public function forceDeleted(Contact $contact)
-    {
-        //
+        UpdateRemoteContact::dispatch($contact);
     }
 }

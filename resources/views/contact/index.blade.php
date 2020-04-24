@@ -8,7 +8,10 @@
         <div class="col">
             <div class="d-flex align-items-center justify-content-between">
                 <h1>Contacts:</h1>
-                <a href="{{route('contacts.create')}}" class="btn btn-success" role="button">Create</a>
+                <div>
+                    <a href="{{route('contactImport.create')}}" class="btn btn-success" role="button">Import</a>
+                    <a href="{{route('contacts.create')}}" class="btn btn-success" role="button">Create</a>
+                </div>
             </div>
         </div>
     </div>

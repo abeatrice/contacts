@@ -23,4 +23,8 @@ Route::get('/home', function () {
     return redirect('/contacts');
 });
 
-Route::resource('contacts', 'ContactController')->middleware('auth');
+Route::middleware('auth')->group(function() {
+    Route::get('contacts/import', 'ContactImportController@create')->name('contactImport.create');
+    Route::post('contacts/import', 'ContactImportController@store')->name('contactImport.store');
+    Route::resource('contacts', 'ContactController');
+});

@@ -1,33 +1,12 @@
 # Contact SaaS
 
-## Install
+ - This is a simple software as a service application for users to maintain Contacts.
+ - There is basic authentication for users to register/login.
+ - Authenticated users can view, create/import, edit, or delete contacts.
+ - Contacts will be synced with a remote repository. 
+ - The included remote repository impliments [klaviyo](https://www.klaviyo.com/), however, the service is coded to an interface so another implimentation can be swaped in later or mocked for tests if needed.
+ - The application uses [laravel horzion](https://laravel.com/docs/7.x/horizon) and dispached jobs/job queues so that remote repo http requests are handled in the background and application flow can be quickly returned to the user.
 
-Install php dependencies
-```
-$ composer install
-```
+## Documentation
 
-Create env file
-```
-$ cp .env.example .env
-$ php artisan key:generate
-```
-
-Update .env file's keys
-```
-APP_NAME=Contacts
-DB_DATABASE=launchcart
-DB_USERNAME=homestead
-DB_PASSWORD=secret
-```
-
-Migrate the database
-```
-$ php artisan migrate
-```
-
-Install & Build front end
-```
-$ npm install
-$ npm run dev
-```
+ - [Local Development Instructions](/docs/local.md)

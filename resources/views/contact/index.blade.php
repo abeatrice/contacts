@@ -44,5 +44,10 @@
             </tbody>
         </table>
     </div>
+    <div class="row justify-content-center">
+        <div class="col">
+            {{$contacts->links()}}
+        </div>
+    </div>
 </div>
 @endsection

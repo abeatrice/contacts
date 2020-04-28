@@ -8,9 +8,9 @@
         <div class="col">
             <div class="d-flex align-items-center justify-content-between">
                 <h1>Contacts:</h1>
-                <div>
-                    <a href="{{route('contactImport.create')}}" class="btn btn-success" role="button">Import</a>
-                    <a href="{{route('contacts.create')}}" class="btn btn-success" role="button">Create</a>
+                <div class="d-flex align-items-center">
+                    <a href="{{route('contactImport.create')}}" class="btn btn-success mr-2" role="button">Import</a>
+                    <a href="{{route('contacts.create')}}" class="btn btn-primary mr-2" role="button">Create</a>
                 </div>
             </div>
         </div>
@@ -31,6 +31,7 @@
                         <td>{{$contact->phone}}</td>
                         <td>
                             <div class="d-flex">
+                                <div><track-click id="{{$contact->id}}"/></div>
                                 <a href="{{route('contacts.edit', $contact)}}" class="btn btn-primary mr-2" role="button">Edit</a>
                                 <form method="POST" action="{{route('contacts.destroy', $contact)}}">
                                     @csrf
